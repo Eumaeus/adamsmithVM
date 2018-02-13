@@ -53,8 +53,8 @@ echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-se
 sudo apt-get -y install oracle-java8-installer
 echo "Setting environment variables for Java 8.."
 sudo apt-get install -y oracle-java8-set-default
-apt-get -y install groovy
-apt-get -y install gradle
+#apt-get -y install groovy
+#apt-get -y install gradle
 
 # install SBT
 echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
@@ -67,12 +67,12 @@ sudo apt-get install sbt
 #########################################################
 
 cd /vagrant
-git clone https://github.com/Eumaeus/cts-demo-corpus.git
-git clone https://github.com/cite-architecture/cite-archive-manager
-git clone https://github.com/cite-architecture/CITE-App.git
-git clone https://github.com/Eumaeus/croala-twiddle.git
-git clone https://github.com/cite-architecture/citedx.git
-git clone https://github.com/cite-architecture/cex-maker.git
+#git clone https://github.com/Eumaeus/cts-demo-corpus.git
+#git clone https://github.com/cite-architecture/cite-archive-manager
+#git clone https://github.com/cite-architecture/CITE-App.git
+#git clone https://github.com/Eumaeus/croala-twiddle.git
+#git clone https://github.com/cite-architecture/citedx.git
+#git clone https://github.com/cite-architecture/cex-maker.git
 
 
 # Final clean up
@@ -81,7 +81,8 @@ sudo apt-get -y autoremove
 echo "-----------------------------------"
 echo "The virtual machine is ready."
 echo ""
-echo "Do 'vagrant ssh' to log into it. Or…"
-echo "… just visit http:192.168.22.10/cs2 to work with the CITE Servlet."
+echo "Do 'vagrant ssh' to log into it. "
+echo "Do 'logout' to exit the VM, and 'vagrant halt' to stop it. "
+echo "Do 'vagrant up' and 'vagrant ssh' to get back in."
 echo ""
 echo "-----------------------------------"
