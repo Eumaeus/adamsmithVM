@@ -24,30 +24,51 @@ val match1 = """^:[^:\t]+""".r
 val match2 = """^::[^:\t]+""".r
 val match3 = """^:::[^:\t]+""".r
 
+val contentMatch = """\t.+""".r
+
 var cite0:String = ""
 var cite1:String = ""
 var cite2:String = ""
 var cite3:String = ""
 
+var counter:Int = 0
+
 for (l <- lines){
+
+  val textContentList:List[scala.util.matching.Regex.Match] = contentMatch.findAllMatchIn(l).toList
+  val textContent:String = {
+      if(textContentList.size > 0){
+          textContentList(0).toString
+      } else {
+          ""
+      }
+  }
+  val abbrevText:String = textContent.take(10)
+
   val gotZero:List[scala.util.matching.Regex.Match] = match0.findAllMatchIn(l).toList
   if (gotZero.size > 0){
       cite0 = gotZero(0).toString.split(":")(0)
-      //println(cite0)
+      println(cite0)
+      counter = counter + 1
   }
   val gotOne:List[scala.util.matching.Regex.Match] = match1.findAllMatchIn(l).toList
   if (gotOne.size > 0){
       cite1 = gotOne(0).toString.split(":")(1)
       println(s"${cite0}.${cite1}")
+      counter = counter + 1
   }
   val gotTwo:List[scala.util.matching.Regex.Match] = match2.findAllMatchIn(l).toList
   if (gotTwo.size > 0){
-      cite1 = gotTwo(0).toString.split(":")(2)
-      println(s"${cite0}..${cite1}")
+      cite2 = gotTwo(0).toString.split(":")(2)
+      println(s"${cite0}.${cite1}.${cite2}\t${abbrevText}")
+      counter = counter + 1
   }
   val gotThree:List[scala.util.matching.Regex.Match] = match3.findAllMatchIn(l).toList
   if (gotThree.size > 0){
-      cite1 = gotThree(0).toString.split(":")(3)
-      println(s"${cite0}...${cite1}")
+      cite3 = gotThree(0).toString.split(":")(3)
+      println(s"${cite0}.${cite1}.${cite3}\t${abbrevText}")
+      counter = counter + 1
   }
 }
+
+println(s"--------- ${counter} / ${lines.size} lines processed ------")
