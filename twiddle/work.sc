@@ -21,6 +21,8 @@ val lines = Source.fromFile(htmlFilePath).getLines.toList
 val matcher = """^:?[^\t]+\t""".r
 val match0 = """^[^:]+:""".r
 val match1 = """^:[^:\t]+""".r
+val match2 = """^::[^:\t]+""".r
+val match3 = """^:::[^:\t]+""".r
 
 var cite0:String = ""
 var cite1:String = ""
@@ -31,11 +33,21 @@ for (l <- lines){
   val gotZero:List[scala.util.matching.Regex.Match] = match0.findAllMatchIn(l).toList
   if (gotZero.size > 0){
       cite0 = gotZero(0).toString.split(":")(0)
-      println(cite0)
+      //println(cite0)
   }
   val gotOne:List[scala.util.matching.Regex.Match] = match1.findAllMatchIn(l).toList
   if (gotOne.size > 0){
       cite1 = gotOne(0).toString.split(":")(1)
-      println(s".${cite1}")
+      println(s"${cite0}.${cite1}")
+  }
+  val gotTwo:List[scala.util.matching.Regex.Match] = match2.findAllMatchIn(l).toList
+  if (gotTwo.size > 0){
+      cite1 = gotTwo(0).toString.split(":")(2)
+      println(s"${cite0}..${cite1}")
+  }
+  val gotThree:List[scala.util.matching.Regex.Match] = match3.findAllMatchIn(l).toList
+  if (gotThree.size > 0){
+      cite1 = gotThree(0).toString.split(":")(3)
+      println(s"${cite0}...${cite1}")
   }
 }
