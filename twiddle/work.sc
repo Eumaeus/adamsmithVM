@@ -54,7 +54,7 @@ for (l <- lines){
           ""
       }
   }
-  val abbrevText:String = textContent.take(10)
+  val abbrevText:String = textContent
 
   val gotZero:List[scala.util.matching.Regex.Match] = match0.findAllMatchIn(l).toList
   if (gotZero.size > 0){
