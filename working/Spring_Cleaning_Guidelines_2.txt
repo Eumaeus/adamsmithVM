@@ -1,0 +1,37 @@
+Items removed in WoN1-4-cleaning
+
+Footnote link numbers:
+<a href="[^"]+" id="[^"]+" class="[^"]+">[0-9]*</a>
+
+Margin notes:
+<span class="type-margin"><span>[^<]+</span></span>
+
+<span class="type-margin"><span><span class="[^"]+">[^<]+</span>[^<]+</span></span>
+
+<span class="type-margin"><span>[^<]+<span class="ital">[^<]+</span>[^<]+</span></span>
+
+Page Numbers:
+<span class="pb"><span class="decoration">Edition: current; Page: </span><span class="bracket">[^<]+</span>[^<]+<span class="bracket">[^<]+</span></span>
+
+Special Characters:
+
+<span class="ital">([^<]+)</span>----replace with $1
+
+<span class="sc">([^<]+)</span>----replace with $1
+
+&amp;----replace with &
+
+
+------
+^(urn:[^#]+#).*?(<span class="pb">[^<]+</span>)(.+?<span class="pb">[^<]+</span>)*
+
+<span class="pb">.*?(<span class="pb">)
+
+^(urn:[^#]+#).*(<span class="pb">.*?</span>).*(<span class="pb">.+</span>)
+
+^(urn:[^#]+#).*(<span class="pb">.*?</span>)
+
+
+^(urn:[^#]+#).*(<span class="type-margin"><span>[^<]+</span></span>).+?(<span class="type-margin"><span>[^<]+</span></span>).+?(<span class="type-margin"><span>[^<]+</span></span>)
+
+^(urn:[^#]+#).*(<span class="type-margin"><span>[^<]+</span></span>).*?(<span class="type-margin"><span>[^<]+</span></span>).*?(<span class="type-margin"><span>[^<]+</span></span>)
